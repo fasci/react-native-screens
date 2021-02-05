@@ -33,7 +33,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fasci/react-native-screens.git"
+    "url": "git+https://github.com/fasci/react-native-screens-tvos.git"
   },
   "author": {
     "email": "faschulz@gmx.net",
@@ -42,9 +42,9 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "bugs": {
-    "url": "https://github.com/fasci/react-native-screens/issues"
+    "url": "https://github.com/fasci/react-native-screens-tvos/issues"
   },
-  "homepage": "https://github.com/fasci/react-native-screens#readme",
+  "homepage": "https://github.com/fasci/react-native-screens-tvos#readme",
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
