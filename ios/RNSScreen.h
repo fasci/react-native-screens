@@ -5,6 +5,7 @@
 #import "RNSScreenContainer.h"
 
 @class RNSScreenContainerView;
+@class RCTTVRemoteHandler;
 
 typedef NS_ENUM(NSInteger, RNSScreenStackPresentation) {
   RNSScreenStackPresentationPush,
@@ -67,6 +68,9 @@ typedef NS_ENUM(NSInteger, RNSActivityState) {
 @property (nonatomic) RNSScreenStackAnimation stackAnimation;
 @property (nonatomic) RNSScreenStackPresentation stackPresentation;
 @property (nonatomic) RNSScreenReplaceAnimation replaceAnimation;
+#if TARGET_OS_TV
+@property (nonatomic, strong) RCTTVRemoteHandler *tvRemoteHandler;
+#endif
 
 - (void)notifyFinishTransitioning;
 

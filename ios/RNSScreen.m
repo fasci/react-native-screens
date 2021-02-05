@@ -8,6 +8,10 @@
 #import <React/RCTShadowView.h>
 #import <React/RCTTouchHandler.h>
 
+#if TARGET_OS_TV
+#import "RCTTVRemoteHandler.h"
+#endif
+
 @interface RNSScreenView () <UIAdaptivePresentationControllerDelegate, RCTInvalidating>
 @end
 
@@ -30,6 +34,19 @@
     _gestureEnabled = YES;
     _replaceAnimation = RNSScreenReplaceAnimationPop;
     _dismissed = NO;
+
+#if TARGET_OS_TV
+    _tvRemoteHandler = [RCTTVRemoteHandler new];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(enableTVMenuKey)
+                                                 name:RCTTVEnableMenuKeyNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(disableTVMenuKey)
+                                                 name:RCTTVDisableMenuKeyNotification
+                                               object:nil];
+#endif // TARGET_OS_TV
   }
 
   return self;
@@ -286,6 +303,26 @@
                           withObject:presentationController];
   }
 }
+
+#if TARGET_OS_TV
+
+- (void)enableTVMenuKey {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (![[self gestureRecognizers] containsObject:_tvRemoteHandler.tvMenuKeyRecognizer]) {
+            [self addGestureRecognizer:_tvRemoteHandler.tvMenuKeyRecognizer];
+        }
+    });
+}
+
+- (void)disableTVMenuKey {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([[self gestureRecognizers] containsObject:_tvRemoteHandler.tvMenuKeyRecognizer]) {
+            [self removeGestureRecognizer:_tvRemoteHandler.tvMenuKeyRecognizer];
+        }
+    });
+}
+
+#endif // TARGET_OS_TV
 
 - (void)invalidate
 {
