@@ -308,16 +308,16 @@
 
 - (void)enableTVMenuKey {
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (![[self gestureRecognizers] containsObject:_tvRemoteHandler.tvMenuKeyRecognizer]) {
-            [self addGestureRecognizer:_tvRemoteHandler.tvMenuKeyRecognizer];
+        if (![[self gestureRecognizers] containsObject:self.tvRemoteHandler.tvMenuKeyRecognizer]) {
+            [self addGestureRecognizer:self.tvRemoteHandler.tvMenuKeyRecognizer];
         }
     });
 }
 
 - (void)disableTVMenuKey {
     dispatch_async(dispatch_get_main_queue(), ^{
-        if ([[self gestureRecognizers] containsObject:_tvRemoteHandler.tvMenuKeyRecognizer]) {
-            [self removeGestureRecognizer:_tvRemoteHandler.tvMenuKeyRecognizer];
+        if ([[self gestureRecognizers] containsObject:self.tvRemoteHandler.tvMenuKeyRecognizer]) {
+            [self removeGestureRecognizer:self.tvRemoteHandler.tvMenuKeyRecognizer];
         }
     });
 }
