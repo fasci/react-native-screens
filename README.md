@@ -1,4 +1,8 @@
-# react-native-screens
+# react-native-screens-tvos
+
+This is a fork of [software-mansion/react-native-screens](https://github.com/software-mansion/react-native-screens).
+It adds little extra functionality for projects using [react-native-tvos](https://github.com/react-native-tvos/react-native-tvos) that need to support TVMenuControl.
+Using this fork allows you to use `TVMenuControl.enableTVMenuKey();` to keep a screen from being popped when the menu button on the remote is pressed. The key press can instead be handled using the `BackHandler` component. `TVMenuControl.disableTVMenuKey();` will re-enable the default behavior from react-native-screens.
 
 This project aims to expose native navigation container components to React Native. It is not designed to be used as a standalone library but rather as a dependency of a [full-featured navigation library](https://github.com/react-navigation/react-navigation).
 
